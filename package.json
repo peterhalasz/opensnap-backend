@@ -1,7 +1,7 @@
 {
   "name": "opensnap-backend",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
+  "description": "Open-source Snake AI Platform",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
