@@ -7,7 +7,7 @@ var config = require('./config.js');
 var app = express();
 
 app.use(bodyParser.json())
-app.use('/api', snippets);
+app.use('/api/snippets', snippets);
 
 app.listen(config.express.port, config.express.ip, function (error) {
   if (error) {
