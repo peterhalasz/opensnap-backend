@@ -11,6 +11,7 @@ module.exports = {
                     res.status(500);
                     res.end('Error while getting snippets');
                 } else {
+                    res.setHeader('Content-Type', 'application/json');
                     res.status(200);
                     res.end(JSON.stringify(snippets));
                 }
@@ -27,6 +28,7 @@ module.exports = {
                     res.status(500);
                     res.end('Error while getting snippet id: ' + req.params.id);
                 } else {
+                    res.setHeader('Content-Type', 'application/json');
                     res.status(200);
                     res.end(JSON.stringify(snippet));
                 }
@@ -42,8 +44,9 @@ module.exports = {
                 res.status(500);
                 res.end('Error while creating snippet');
             } else {
+                res.setHeader('Content-Type', 'application/json');
                 res.status(201);
-                res.end('Snippet: ' + snippet.name + " created");
+                res.end(JSON.stringify(snippet));
             }
         });
     }
