@@ -8,8 +8,10 @@ function getSnippets(req, res) {
         .exec(function(err, snippets) {
             if (err) {
                 console.log('Error while getting snippets');
+                res.status(500);
                 res.end('Error while getting snippets');
             } else {
+                res.status(200);
                 res.end(JSON.stringify(snippets));
             }
         });
@@ -22,8 +24,10 @@ function getSnippet(req, res) {
         .exec(function(err, snippet) {
             if (err) {
                 console.log('Error while getting snippet id: ' + req.params.id);
+                res.status(500);
                 res.end('Error while getting snippet id: ' + req.params.id);
             } else {
+                res.status(200);
                 res.end(JSON.stringify(snippet));
             }
         });
@@ -35,8 +39,10 @@ function createSnippet(req, res) {
     newSnippet.save(function(err, snippet) {
         if (err) {
             console.log("Error while saving new snippet");
+            res.status(500);
             res.end('Error while creating snippet');
         } else {
+            res.status(201);
             res.end('Snippet: ' + snippet.name + " created");
         }
     });
