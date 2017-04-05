@@ -4,6 +4,8 @@
 
 [Node Package Manager][npm]
 
+Install MongoDB.
+Copy app/template_config.js contents to app/config.js and fill settings.
 
 ```
 npm install -g gulp
