@@ -37,8 +37,7 @@ module.exports = {
 
     createSnippet: function (req, res) {
         var newSnippet = new Snippet(req.body);
-
-        if (newSnippet._id) {
+        if (req.body._id) {
             Snippet.findById(newSnippet._id, function(err, snippet) {
                 if (err) {
                     console.log('Error while finding snippet: ' + err);
@@ -62,19 +61,19 @@ module.exports = {
                     });
                 }
             });
+        } else {
+            newSnippet.save(function(err, snippet) {
+                if (err) {
+                    console.log('Error while saving new snippet: ' + err);
+                    res.status(500);
+                    res.end('Error while creating snippet');
+                } else {
+                    res.setHeader('Content-Type', 'application/json');
+                    res.status(201);
+                    res.end(JSON.stringify(snippet));
+                }
+            });
         }
-
-        newSnippet.save(function(err, snippet) {
-            if (err) {
-                console.log('Error while saving new snippet: ' + err);
-                res.status(500);
-                res.end('Error while creating snippet');
-            } else {
-                res.setHeader('Content-Type', 'application/json');
-                res.status(201);
-                res.end(JSON.stringify(snippet));
-            }
-        });
     },
 
     updateSnippet: function (req, res) {
